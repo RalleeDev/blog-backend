@@ -1,0 +1,21 @@
+{
+	"dependencies": {
+		"express": "^5.1.0",
+		"zod": "^4.0.14"
+	},
+	"name": "blog-backend",
+	"version": "1.0.0",
+	"main": "/build/index.js",
+	"devDependencies": {
+		"@types/express": "^5.0.3"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "node ./build/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"description": "Simpel Backend system for a blog website"
+}
