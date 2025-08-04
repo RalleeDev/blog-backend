@@ -7,6 +7,11 @@ const user = z.object({
     password: z.string().min(5).max(16),
 });
 
+type User = {
+    username: string;
+    email: string;
+    password: string;
+}
 
 const router = express.Router();
 
