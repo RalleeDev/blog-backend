@@ -22,7 +22,6 @@ router.post('/signup', async (req, res) => {
     if(result.success) {
         result.data;
         try {
-            console.log(result.data.password);
             //Prøver at oprette brugeren i databasen ellers så returnere koden 500 og dokumentere hvad der skete
             const PrismaRequest = await prisma.user.create({
                 data: { email: result.data.email, name: result.data.username, hashedPassword: result.data.password }
