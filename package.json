@@ -2,8 +2,10 @@
 	"dependencies": {
 		"@prisma/client": "^6.13.0",
 		"@prisma/extension-accelerate": "^2.0.2",
+		"@types/jsonwebtoken": "^9.0.10",
 		"bcrypt": "^6.0.0",
 		"express": "^5.1.0",
+		"jsonwebtoken": "^9.0.2",
 		"prisma": "^6.13.0",
 		"zod": "^4.0.14"
 	},
@@ -16,6 +18,8 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"generateKeyPair": "tsc ./src/lib/generateKeyPair.ts && node ./build/lib/generateKeyPair.js",
+		"build": "npx tsc",
 		"dev": "node ./build/index.js"
 	},
 	"keywords": [],
