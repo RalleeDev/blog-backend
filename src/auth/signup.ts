@@ -1,5 +1,6 @@
 import express from 'express';
 import * as z from 'zod';
+import prisma from '../prisma';
 
 const user = z.object({
     username: z.string().min(5).max(10).trim().toLowerCase(),
@@ -23,13 +24,22 @@ router.post('/signup', async (req, res) => {
     console.log(password);
 
     const result = await user.safeParseAsync({ username: username, email: email, password: password})
-    if(!result.success) {
-        result.error;
-        res.send('400 Bad Request')
+    if(result.success) {
+        result.data;
+        try {
+            const prismaResult = await prisma.User.create({
+                data: { email: result.data.email, name: result.data.username, Saltpassword: result.data.password }
+            })
+            console.log(prismaResult);
+            res.send('200 OK')
+        } catch (err) {
+            res.status(500).json({ error: 'Something went wrong' });
+        }
+        res.send('200 OK')
         return;
     } else {
-        result.data;
-        res.send('200 OK')
+                result.error;
+        res.send('400 Bad Request')
         return;
     }
 });
