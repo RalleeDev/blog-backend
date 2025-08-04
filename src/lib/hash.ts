@@ -10,6 +10,8 @@ export async function hashPassword(plainPassword: string)  {
     return hashedPassword;
 }
 
-export function comparePassword() {
-
+export async function comparePassword(plainPassword: string, hash: string) {
+    const result = await compare(plainPassword, hash);
+    console.log(result);
+    return result;
 }
